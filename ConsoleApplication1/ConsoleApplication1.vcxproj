@@ -152,7 +152,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ConsoleApplication1.cpp" />
-    <ClCompile Include="nvi.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="nvi.h" />

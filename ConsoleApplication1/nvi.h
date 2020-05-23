@@ -15,6 +15,7 @@ private:
 	}
 };
 
+//private再编译器确定，virtual再运行期确定，互相不影响
 class b : public a
 {
 private:
