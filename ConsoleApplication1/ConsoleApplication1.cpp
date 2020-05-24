@@ -89,15 +89,65 @@ void comb_sort(vector<int> a)
 	}
 }
 
+//堆排序
+//子堆向下调整
+void maxHeapDown(vector<int> &a,int start,int end)
+{
+	//当前节点
+	int l = start;
+	//左孩子
+	int lc = 2 * l + 1;
+	for (; lc <= end; l=lc, lc = 2 * lc + 1)
+	{
+		//找到两个孩子中最大的
+		if (lc < end && a[lc] < a[lc + 1])
+		{
+			lc++;
+		}
+		//不需调换
+		if (a[l] >= a[lc])
+		{
+			break;
+		}
+		else
+		{
+			swap(a[l], a[lc]);
+		}
+	}
+}
+//构建最大堆
+void heap_sort_asc(vector<int> a)
+{
+	//父节点
+	int n = a.size();
+	//最大的拥有孩子的父节点n/2-1
+	for (int i=n/2-1; i >= 0; i--)
+	{
+		maxHeapDown(a, i, n - 1);
+	}
+	for (int i = n - 1; i >0; i--)
+	{
+		swap(a[0], a[i]);
+		maxHeapDown(a, 0, i - 1);
+	}
+	cout << "heap_sort_asc" << endl;
+	for (int i = 0; i < a.size(); i++)
+	{
+		cout << a[i] << endl;
+	}
+}
+
 int main()
 {
 	/*a *pa1 = new b;
 	pa1->f();*/
 
 	vector<int> v = { 2,5,3,7,98,2,3,6,6 };
+	//vector<int> v = { 20, 30, 90, 40, 70, 110, 60, 10, 100, 50, 80 };
 	//selection_sort(v);
 	//selection_sort_2(v);
-	comb_sort(v);
+	//comb_sort(v);
+	heap_sort_asc(v);
 
 	std::cout << "Hello World!\n";
 }
